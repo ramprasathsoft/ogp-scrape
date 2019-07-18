@@ -19,11 +19,11 @@ node-cache
 
 Following are optional
 
-...
+```
 mocha
 chai
 chai-http
-...
+```
 
 ### Installing
 
@@ -38,15 +38,15 @@ npm install
 At here i will give an sample request and response see following.
 
 After download and install all dependencies start the service using following command
-...
+```
 npm start
-...
+```
 Now service is listning in port 1991
 
 Use the following request url for scraping
-...
+```
 http://localhost:1991/ogp/scrape
-...
+```
 
 Sample Request
 ```
