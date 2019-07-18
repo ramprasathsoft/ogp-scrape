@@ -1,87 +1,94 @@
-# ogp-scrape
+# OGP-SCRAPER
 
-One Paragraph of project description goes here
+This module is for scraping details from given url. Here used one npm for achieve it details are following. In here i covered server cache and unit test also.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Follow the following instruction for using this module.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+For use this module you need to have nodejs in your machine and following npm are used.
 
 ```
-Give examples
+express
+body-parser
+open-graph-scraper
+node-cache
 ```
+
+Following are optional
+
+...
+mocha
+chai
+chai-http
+...
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+After download you just use the following command to install them.
 
 ```
-Give the example
+npm install
 ```
 
-And repeat
+## Running the sample
+
+At here i will give an sample request and response see following.
+
+After download and install all dependencies start the service using following command
+...
+npm start
+...
+Now service is listning in port 1991
+
+Use the following request url for scraping
+...
+http://localhost:1991/ogp/scrape
+...
+
+Sample Request
+```
+{
+    "URL": "https://www.npmjs.com/package/node-cache",
+    "NEED_CACHE": "Y"
+}
+```
+explanation
+
+
+Sample Response
+```
+{
+    "data": {
+        "ogDescription": "Simple and fast NodeJS internal caching. Node internal in memory cache like memcached.",
+        "ogTitle": "node-cache",
+        "ogUrl": "https://www.npmjs.com/package/node-cache",
+        "ogSiteName": "npm",
+        "twitterCard": "summary",
+        "twitterTitle": "npm: node-cache",
+        "twitterDescription": "Simple and fast NodeJS internal caching. Node internal in memory cache like memcached.",
+        "ogImage": {
+            "url": "https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
+            "width": null,
+            "height": null,
+            "type": null
+        }
+    },
+    "success": true,
+    "requestUrl": "https://www.npmjs.com/package/node-cache"
+}
+```
+
+### Running the test
+
+After download you just use the following command for run unit test.
 
 ```
-until finished
+npm test
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Ramprasath S** - *Initial work* - [ogp-scrape](https://github.com/ramprasathsoft/ogp-scrape)

@@ -5,10 +5,9 @@ var crypto = require('crypto');
 
 var myCache = new nodeCache();
 var algorithm = 'aes256'; // or any other algorithm supported by OpenSSL
-var key = 'ogp_pass_key';
+var key = 'ogp_pass_key'; // key for hex encryption
 
-var ogs = require('open-graph-scraper');
-
+//this is a middleware function used for server cache
 function cacheHelper(req, res, next) {
     var params = req.body;
     if (params.NEED_CACHE == 'Y') {
@@ -31,17 +30,20 @@ function cacheHelper(req, res, next) {
     }
 }
 
+//this function is used for hex encrytion
 function encString(str) {
     var cipher = crypto.createCipher(algorithm, key);
     var encrypted = cipher.update(str, 'utf8', 'hex') + cipher.final('hex');
     return encrypted;
 }
 
+// this is a scraping route for given url
 router.post('/scrape', cacheHelper, function (req, res) {
     try {
+        var ogs = require('open-graph-scraper');
         var params = req.body;
         var options = { 'url': params.URL };
-        ogs(options, function (error, results, response) {
+        ogs(options, function (error, results, response) { //here response will get all data about given url
             if (error) {
                 console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
                 res.send(error);
@@ -55,6 +57,7 @@ router.post('/scrape', cacheHelper, function (req, res) {
     }
 });
 
+// this is a common send response function for all routes. We can interupt response data at here.
 function sendResponse(res, params, data) {
     if (params.NEED_CACHE == 'Y') {
         var key = encString(JSON.stringify(params));
