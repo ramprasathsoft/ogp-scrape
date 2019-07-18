@@ -4,7 +4,8 @@
   "description": "object graph parameter scrape",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
