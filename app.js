@@ -17,3 +17,5 @@ app.use('/ogp', scrape); //added for routing
 app.listen(1991, function () {
     console.log('app listening on port 1991');
 });
+
+module.exports = app;
